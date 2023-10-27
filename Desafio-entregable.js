@@ -1,5 +1,6 @@
 //LIBRERIA FILE SYSTEM
 
+
 const fs = require('fs')
 
 //CLASS PRODUCT
@@ -126,39 +127,46 @@ update(id,obj){
     return;
   }
 
-
   const keys = Object.keys(obj);
  
   const keys_old= Object.keys(all_products1[0]);
-  
 
-  
-    keys.forEach((date)=>{
+ try {
 
-        let dato = keys_old.includes(date)
-        
+  keys.forEach((date)=>{
+
+    let dato = keys_old.includes(date)
+    
+ 
+    if (!dato) {
+  
      
-        if (!dato) {
-         console.log(`No existe el campo: ${date}`);
-          return 
+      throw new error ("hubo error")
+      
+    }
+  
+ } )}catch (error) {
+  
+  console.log("Verifique sus campos, no son correctos")
+ return
+ }
+   
+ all_products1[indice] = {...all_products1[indice],...obj, id}
+ fs.writeFileSync(this.route, JSON.stringify(all_products1,null,5))
+
+        
+         }
         }
-         })
 
-         all_products1[indice] = {...all_products1[indice],...obj, id}
-         fs.writeFileSync(this.route, JSON.stringify(all_products1,null,5))
-}  
+     
   
   
-}
+ const pm = new ProductsManager("./listProducts.txt")
 
 
-
- const pm = new ProductsManager("./products/listProducts.txt")
-
-
- //pm.addProducts('naranja','Es una fruta',400,'https://www.google.com/imgres?imgurl=https%3A%2F%2Felpoderdelconsumidor.org%2Fwp-content%2Fuploads%2F2022%2F02%2Fnaranja-1.jpg&tbnid=lpQ1PIew9bjQoM&vet=12ahUKEwiL6oa_hvSBAxUHULgEHaLcAacQMygCegQIARBy..i&imgrefurl=https%3A%2F%2Felpoderdelconsumidor.org%2F2022%2F02%2Fel-poder-de-la-naranja%2F&docid=QJHb282tljjB3M&w=600&h=375&q=NARANJA&hl=es-419&ved=2ahUKEwiL6oa_hvSBAxUHULgEHaLcAacQMygCegQIARBy',677788,20)
- //pm.addProducts('lechuga','Es una verdura',600,'https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.frutamare.com%2Fwp-content%2Fuploads%2F2022%2F04%2Ftipos-de-lechuga.jpeg.webp&tbnid=E4dUIol4pRtqxM&vet=12ahUKEwij4e2YhvSBAxVymZUCHUGkCQoQMygBegQIARBL..i&imgrefurl=https%3A%2F%2Fwww.frutamare.com%2Ftipos-de-lechuga%2F&docid=kE-z6IaXTXjpSM&w=795&h=602&q=LECHUGA%20LINK%20CORTO&hl=es-419&ved=2ahUKEwij4e2YhvSBAxVymZUCHUGkCQoQMygBegQIARBL',677787,20)
- //pm.addProducts('tomate','Es una verdura',800,'https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.frutamare.com%2Fwp-content%2Fuploads%2F2022%2F04%2Ftipos-de-lechuga.jpeg.webp&tbnid=E4dUIol4pRtqxM&vet=12ahUKEwij4e2YhvSBAxVymZUCHUGkCQoQMygBegQIARBL..i&imgrefurl=https%3A%2F%2Fwww.frutamare.com%2Ftipos-de-lechuga%2F&docid=kE-z6IaXTXjpSM&w=795&h=602&q=LECHUGA%20LINK%20CORTO&hl=es-419&ved=2ahUKEwij4e2YhvSBAxVymZUCHUGkCQoQMygBegQIARBL',677786,20)
+ pm.addProducts('naranja','Es una fruta',400,'https://www.google.com/imgres?imgurl=https%3A%2F%2Felpoderdelconsumidor.org%2Fwp-content%2Fuploads%2F2022%2F02%2Fnaranja-1.jpg&tbnid=lpQ1PIew9bjQoM&vet=12ahUKEwiL6oa_hvSBAxUHULgEHaLcAacQMygCegQIARBy..i&imgrefurl=https%3A%2F%2Felpoderdelconsumidor.org%2F2022%2F02%2Fel-poder-de-la-naranja%2F&docid=QJHb282tljjB3M&w=600&h=375&q=NARANJA&hl=es-419&ved=2ahUKEwiL6oa_hvSBAxUHULgEHaLcAacQMygCegQIARBy',677788,20)
+ pm.addProducts('lechuga','Es una verdura',600,'https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.frutamare.com%2Fwp-content%2Fuploads%2F2022%2F04%2Ftipos-de-lechuga.jpeg.webp&tbnid=E4dUIol4pRtqxM&vet=12ahUKEwij4e2YhvSBAxVymZUCHUGkCQoQMygBegQIARBL..i&imgrefurl=https%3A%2F%2Fwww.frutamare.com%2Ftipos-de-lechuga%2F&docid=kE-z6IaXTXjpSM&w=795&h=602&q=LECHUGA%20LINK%20CORTO&hl=es-419&ved=2ahUKEwij4e2YhvSBAxVymZUCHUGkCQoQMygBegQIARBL',677787,20)
+ pm.addProducts('tomate','Es una verdura',800,'https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.frutamare.com%2Fwp-content%2Fuploads%2F2022%2F04%2Ftipos-de-lechuga.jpeg.webp&tbnid=E4dUIol4pRtqxM&vet=12ahUKEwij4e2YhvSBAxVymZUCHUGkCQoQMygBegQIARBL..i&imgrefurl=https%3A%2F%2Fwww.frutamare.com%2Ftipos-de-lechuga%2F&docid=kE-z6IaXTXjpSM&w=795&h=602&q=LECHUGA%20LINK%20CORTO&hl=es-419&ved=2ahUKEwij4e2YhvSBAxVymZUCHUGkCQoQMygBegQIARBL',677786,20)
 
   //console.log( pm.getProduct())
   //console.log( pm.getProductById(1))
@@ -168,8 +176,8 @@ update(id,obj){
   //pm.deleteProduct(3)
   
   //console.log( pm.getProduct())
-  pm.update(2,{title:"zapallo"})
-  console.log( pm.getProduct())
+  //pm.update(2,{title:"Melon",price:400,stock:15,imagen:"jpg"})
+  //console.log( pm.getProduct())
 
   
 
