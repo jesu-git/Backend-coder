@@ -36,17 +36,52 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
 
-    let { title, description, code, price, status, stock, category,thumbnail } = req.body
+    let all_products = pm.getProduct()
+    let body = req.body
+    let exist = all_products.find(x=> x.code === body.code)
+    if(exist) res.status(400).json("El code esta en uso")
 
-    if (typeof title !== "string" || typeof description !== "string" ||typeof code !== "string" ||typeof category !== "string")return res.status(400).json("datos ingresados incorrectos en campos string")
-    if(typeof status !== "boolean") return req.status(400).json("El status no es un boolean")
-    if (isNaN(price) || isNaN(stock)) return res.status(400).send("Datos de price y stock incorrecto,ingrese datos numericos")
-    if (!Array.isArray(thumbnail)) {
-        return res.status(400).json({ error: 'Formato inválido para el campo thumbnails' })}
+    const date = ['title', 'description', 'price', 'code', 'stock', 'category']
 
-    let respuesta = pm.addProducts(title, description, code, price, status, stock, category,thumbnail)
-    if (!respuesta) res.status(400).json("No se pudo ingresar el producto")
-    else { res.status(200).json({ respuesta }) }
+    let filter = date.filter(x => !(x in body));
+
+    if (filter.length > 0) {
+
+        return res.status(400).json("No has ingresado todos los campos");
+
+    }
+
+    const typeDate = {
+
+        title: 'string',
+        description: 'string',
+        code: 'string',
+        price: 'number',
+        status: 'boolean',
+        stock: 'number',
+        category: 'string'
+
+    }
+
+    let incorrectDate = Object.entries(typeDate).reduce((acc, [date, type]) => {
+        if (body[date] !== undefined) {
+            if (typeof body[date] !== type) acc.push(date)
+        } return acc
+    }, [])
+
+    if (incorrectDate.length > 0) return res.status(400).json("Los datos ingresados en un tipo de dato invalido")
+   
+    body.thumbnail = body.thumbnail || []
+
+    body.status = body.status || true
+    if (!Array.isArray(body.thumbnail)) return res.status(400).json("El campo thumbnail es  inválido ")
+
+    let product = body
+
+
+    let respuesta = pm.addProducts(product);
+    if (!respuesta) return res.status(400).json("No se ha podido agregar el producto")
+    else { res.status(200).json("Producto ingresado correctamente:") }
 
 })
 

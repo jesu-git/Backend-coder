@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use('/api/products', router_products)
-app.use('/api/cart', router_cart)
+app.use('/api/carts', router_cart)
 app.get("/", (req, res) => {
     res.status(200).json("Server online")
 })

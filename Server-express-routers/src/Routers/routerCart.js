@@ -1,17 +1,17 @@
 
 import { Router } from 'express'
 export const router = Router()
-import { cart } from './managerCart.js'
+import { carts } from './managerCart.js'
 
 
 
-const cm = new cart('./carts.txt')
+const cm = new carts('./carts.txt')
 
 router.get('/:id', (req, res) => {
 let id = parseInt(req.params.id)
 let respuesta = cm.getProductId(id)
 
-if(!respuesta) return res.status(400).json("El carrito no fue encontrado")
+if(respuesta == -1) return res.status(400).json("El carrito no fue encontrado")
 else{res.status(200).json(respuesta)}
 
 })

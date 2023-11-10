@@ -4,7 +4,7 @@ import { ProductsManager } from './managerProducts.js'
 
 const pm = new ProductsManager('./listProducts.txt')
 
-export class cart {
+export class carts {
 
     constructor(route) {
 
@@ -28,7 +28,7 @@ export class cart {
 
         let carts = this.getCart()
 
-        let id = carts.length + 1
+        let id = Math.max(all_products.map(x => x.id), 0) + 1
         let productsCart = []
 
 
@@ -74,33 +74,27 @@ export class cart {
         return cart
     }
 
-    getProductId(id){
+    getProductId(id) {
 
         let carts = this.getCart()
-    
+        let products = pm.getProduct()
         let exist = carts.findIndex(x => x.id == id)
         
-        let cart = carts[exist].productsCart
-         console.log(cart)
-        let products = pm.getProduct()
-        
-        
 
-        if (exist != -1) {
-          
 
-            return cart
-  
-               }
-    
-                
-    
-        else{
-    
-            return console.log("El carrito no se encontro")
+        if (exist == -1) {
+        let resultado = -1
+        return resutado
+           
         }
 
-       
+        else {
+            let cart = carts[exist].productsCart
+            return cart
+
+        }
+
+
     }
 
 

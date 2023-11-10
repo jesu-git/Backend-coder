@@ -28,46 +28,17 @@ export class ProductsManager {
 
   }
   //METODO QUE INGRESA LOS PRODUCTOS NUEVOS AL ARREGLO Y COMPRUEBA QUE EL CODE NO SE REPITA Y TODOS LOS CAMPOS SE INGRESEN
-  addProducts(title, description, code, price, status, stock, category,thumbnail) {
+  addProducts(product) {
 
     let all_products = this.getProduct()
 
-    if (title === "" || description === "" || code === "" || isNaN(price) || price < 0 || stock === "" || category == ""|| thumbnail == "") {
-      return console.log("debe completar todos los campos")
-    }
-
-    let exist = all_products.find(X => X.code === code)
-
-    if (exist) {
-
-      console.log("El code ingresado ya esta en uso")
-      return
-    }
-
-
     let id = all_products.length + 1
+    let productNew ={id,...product} 
 
-    let productNew = {
-      id,
-      title,
-      description,
-      code,
-      price,
-      status: status !== undefined ? status : true,
-      stock,
-      category,
-      thumbnail
-    }
-    console.log(productNew)
-    if (Object(productNew).length < 9) {
-      console.log("Su operacion sin exito,no has llenado todos los campos")
-    }
-    else {
-      all_products.push(productNew)
+    all_products.push(productNew)
 
-      fs.writeFileSync(this.route, JSON.stringify(all_products, null, 5))
+    fs.writeFileSync(this.route, JSON.stringify(all_products,null,5))
        return productNew
-    }
 
   }
   //METODO QUE NOS DEVUELVE EL PRODUCTO MEDIANTE EL INGRESO DE ID POR PARAMETRO 
@@ -111,7 +82,7 @@ export class ProductsManager {
   }
   //METODO QUE ACTUALIZA MEDIANTE EL INGRESO DE DOS PARAMETROS(PARAMETRO 1 ES UN ID,PARAMETRO 2 ES UN OBJETO CON LAS CLAVE-VALOR A MODIFICAR)
   update(id, obj) {
-   
+
     let all_products1 = this.getProduct()
 
     let indice = all_products1.findIndex((x) => x.id === id)
@@ -132,8 +103,16 @@ export class ProductsManager {
     }
 
     const keys = Object.keys(obj);
+    let checkCode = keys.find(x => x === "code")
 
-    const keys_old = ["title","description", "code", "price", "status", "stock", "category", "thumbnails"]
+    if (checkCode) {
+      let codeC = all_products1.find(x => x.code == obj.code)
+
+      if (codeC) return console.log("El code utilizado ya esta en uso")
+    }
+
+
+    const keys_old = ["title", "description", "code", "price", "status", "stock", "category", "thumbnail"]
 
     try {
 
@@ -157,8 +136,8 @@ export class ProductsManager {
     }
 
     all_products1[indice] = { ...all_products1[indice], ...obj, id }
-    fs.writeFileSync(this.route, JSON.stringify(all_products1,null,5))
-     return all_products1[indice]
+    fs.writeFileSync(this.route, JSON.stringify(all_products1, null, 5))
+    return all_products1[indice]
   }
 }
 
