@@ -6,17 +6,17 @@ export const router = Router()
 
 let pm = new ProductsManager(path.join(__dirname,'./file/listProducts.txt'))
 let products = pm.getProduct()
-console.log(products)
+
 
 router.get('/',(req,res)=>{
 
-res.status(200).render('home',{products,titulo: "Productos"})
+res.status(200).render("home",{titulo:"home page",products})
 
 })
 
 
-router.get('/socket',(req,res)=>{
+router.get('/websocket',(req,res)=>{
 
-    res.status(200).render('socket',{titulo:"socket"})
+    res.status(200).render('websocket',{titulo:"socket"})
     
     })
