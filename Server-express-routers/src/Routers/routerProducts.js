@@ -1,4 +1,5 @@
-
+import __dirname from '../utils.js'
+import path from 'path'
 import { Router } from 'express'
 export const router = Router()
 import { ProductsManager } from './managerProducts.js'
@@ -6,7 +7,7 @@ import { ProductsManager } from './managerProducts.js'
 
 
 
-const pm = new ProductsManager('./listProducts.txt')
+const pm = new ProductsManager(path.join(__dirname,'./file/listProducts.txt'))
 const products = pm.getProduct()
 
 

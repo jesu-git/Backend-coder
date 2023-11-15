@@ -2,7 +2,7 @@
 import fs from 'fs'
 import { ProductsManager } from './managerProducts.js'
 
-const pm = new ProductsManager('./listProducts.txt')
+const pm = new ProductsManager('./file/listProducts.txt')
 
 export class carts {
 
@@ -27,8 +27,9 @@ export class carts {
     createCart() {
 
         let carts = this.getCart()
+        
 
-        let id = Math.max(all_products.map(x => x.id), 0) + 1
+        let id = carts.length + 1
         let productsCart = []
 
 

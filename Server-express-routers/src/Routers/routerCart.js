@@ -1,11 +1,12 @@
-
+import __dirname from '../utils.js'
+import path from 'path'
 import { Router } from 'express'
 export const router = Router()
 import { carts } from './managerCart.js'
 
 
 
-const cm = new carts('./carts.txt')
+const cm = new carts(path.join(__dirname,'./file/carts.txt'))
 
 router.get('/:id', (req, res) => {
 let id = parseInt(req.params.id)

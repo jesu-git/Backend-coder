@@ -1,0 +1,68 @@
+[
+     {
+          "id": 1,
+          "title": "tomate",
+          "description": "vegetal",
+          "code": "4087",
+          "price": 900,
+          "status": true,
+          "stock": 5000,
+          "category": "fruta",
+          "thumbnail": []
+     },
+     {
+          "id": 2,
+          "title": "tomate",
+          "description": "vegetal",
+          "code": "4087",
+          "price": 900,
+          "status": true,
+          "stock": 5000,
+          "category": "fruta",
+          "thumbnail": []
+     },
+     {
+          "id": 3,
+          "title": "Lechuga",
+          "description": "vegetal",
+          "code": "4088",
+          "price": 1900,
+          "status": true,
+          "stock": 500,
+          "category": "fruta",
+          "thumbnail": []
+     },
+     {
+          "id": 4,
+          "title": "Camote",
+          "description": "Vegetal",
+          "code": "4089",
+          "price": 600,
+          "status": true,
+          "stock": 1500,
+          "category": "Verdura",
+          "thumbnail": []
+     },
+     {
+          "id": 5,
+          "title": "Cebolla",
+          "description": "Vegetal",
+          "code": "4090",
+          "price": 700,
+          "status": true,
+          "stock": 150,
+          "category": "Verdura",
+          "thumbnail": []
+     },
+     {
+          "id": 6,
+          "title": "Banana",
+          "description": "Vegetal",
+          "code": "4091",
+          "price": 7000,
+          "status": true,
+          "stock": 1500,
+          "category": "Fruta",
+          "thumbnail": []
+     }
+]

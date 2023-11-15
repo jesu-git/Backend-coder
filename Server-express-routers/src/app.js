@@ -2,20 +2,36 @@
 import express from 'express';
 import { router as router_products } from './Routers/routerProducts.js';
 import { router as router_cart } from './Routers/routerCart.js'
+import { router as router_views } from './Routers/routerViews.js'
+import { engine } from 'express-handlebars' 
+import { Server } from 'socket.io'
+import __dirname from './utils.js'
+import path from 'path'    
 const app = express()
 const PORT = 8080
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.engine('handlebars',engine());
+app.set('view engine','handlebars')
+app.set('views', path.join(__dirname,'/views'))
 
+app.get("/", (req, res) => {
+    res.setHeader('content-type', 'text/html')
+    res.status(200).render('home')
+})
 app.use('/api/products', router_products)
 app.use('/api/carts', router_cart)
-app.get("/", (req, res) => {
-    res.status(200).json("Server online")
-})
+app.use('/views', router_views)
+
 
 const server = app.listen(PORT, () => {
 
     console.log("Server in service")
-})   
+})
+
+const io = new Server(server)
+io.on("connection",socket=>{
+console.log(`Se conecto cliente id:${socket.id}`)
+})
