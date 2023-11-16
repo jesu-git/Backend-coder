@@ -3,6 +3,7 @@ import path from 'path'
 import { Router } from 'express'
 export const router = Router()
 import { ProductsManager } from './managerProducts.js'
+import { io } from '../app.js'
 
 
 
@@ -82,8 +83,9 @@ router.post('/', (req, res) => {
 
     let respuesta = pm.addProducts(product);
     if (!respuesta) return res.status(400).json("No se ha podido agregar el producto")
-    else { res.status(200).json("Producto ingresado correctamente:") }
-
+    else { res.status(200).json("Producto ingresado correctamente:") 
+           io.emit("newProduct",respuesta.title)}
+    
 })
 
 router.put('/:id', (req, res) => {
@@ -105,5 +107,6 @@ router.delete("/:id", (req, res) => {
     let respuesta = pm.deleteProduct(id)
 
     if (!respuesta) return res.status(400).json("Error al eliminar, vuelva intentar")
-    else { res.status(200).json(`El producto con id ${id} ha sido eliminado`) }
+    else { res.status(200).json(`El producto con id ${id} ha sido eliminado`) 
+     io.emit("delete",id)}
 })

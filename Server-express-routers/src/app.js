@@ -4,7 +4,7 @@ import { router as router_products } from './Routers/routerProducts.js';
 import { router as router_cart } from './Routers/routerCart.js'
 import { router as router_views } from './Routers/routerViews.js'
 import { engine } from 'express-handlebars'
-
+import { Server } from 'socket.io'
 import __dirname from './utils.js'
 import path from 'path' 
 
@@ -18,7 +18,7 @@ app.engine('handlebars',engine());
 app.set('view engine','handlebars')
 app.set('views', path.join(__dirname,'./views'))
 
-app.use(express.static("./src/public"))
+app.use('/public',express.static(__dirname +'/public'))
 
 app.get("/", (req, res) => {
 
@@ -33,4 +33,11 @@ app.use('/views', router_views)
 const server = app.listen(PORT, () => {
 
     console.log("Server in service")
+})
+
+
+export const io = new Server(server)
+
+io.on("connection",socket=>{
+    console.log("Cliente conectado")
 })

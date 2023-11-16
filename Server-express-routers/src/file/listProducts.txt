@@ -64,5 +64,82 @@
           "stock": 1500,
           "category": "Fruta",
           "thumbnail": []
+     },
+     {
+          "id": 7,
+          "title": "Papa",
+          "description": "Vegetal",
+          "code": "4092",
+          "price": 7000,
+          "status": true,
+          "stock": 1500,
+          "category": "Fruta",
+          "thumbnail": []
+     },
+     {
+          "id": 8,
+          "title": "frutilla",
+          "description": "Vegetal",
+          "code": "4093",
+          "price": 7000,
+          "status": true,
+          "stock": 1500,
+          "category": "Fruta",
+          "thumbnail": []
+     },
+     {
+          "id": 9,
+          "title": "Naranja",
+          "description": "Vegetal",
+          "code": "4093",
+          "price": 7000,
+          "status": true,
+          "stock": 1500,
+          "category": "Fruta",
+          "thumbnail": []
+     },
+     {
+          "id": 10,
+          "title": "Kiwi",
+          "description": "Vegetal",
+          "code": "4095",
+          "price": 7000,
+          "status": true,
+          "stock": 1500,
+          "category": "Fruta",
+          "thumbnail": []
+     },
+     {
+          "id": 11,
+          "title": "Limon",
+          "description": "Vegetal",
+          "code": "4097",
+          "price": 7000,
+          "status": true,
+          "stock": 1500,
+          "category": "Fruta",
+          "thumbnail": []
+     },
+     {
+          "id": 12,
+          "title": "Melon",
+          "description": "Vegetal",
+          "code": "4098",
+          "price": 7000,
+          "status": true,
+          "stock": 1500,
+          "category": "Fruta",
+          "thumbnail": []
+     },
+     {
+          "id": 13,
+          "title": "Acelga",
+          "description": "Vegetal",
+          "code": "4101",
+          "price": 7000,
+          "status": true,
+          "stock": 1500,
+          "category": "verdura",
+          "thumbnail": []
      }
 ]
