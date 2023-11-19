@@ -16,7 +16,7 @@ res.status(200).render("home",{titulo:"home page",products})
 })
 
 
-router.get('/websocket',(req,res)=>{
+router.get('/realtimeproducts',(req,res)=>{
 
     res.status(200).render('websocket',{products,titulo:"Web socket"})
     

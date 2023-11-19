@@ -4,9 +4,8 @@ const socket = io()
 socket.on("newProduct", product=>{
     let ul = document.querySelector('ul')
     let newLi = document.createElement('li')
-    let hr = DOCUMENT.createElement('hr')
     newLi.innerHTML = product
-    ul.append(newLi,hr)
+    ul.append(newLi)
     
 
 })
