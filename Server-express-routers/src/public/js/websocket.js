@@ -4,16 +4,16 @@ const socket = io()
 socket.on("newProduct", product=>{
     let ul = document.querySelector('ul')
     let newLi = document.createElement('li')
+    let hr = DOCUMENT.createElement('hr')
     newLi.innerHTML = product
-    ul.append(newLi)
+    ul.append(newLi,hr)
+    
+
 })
 
-
-socket.on("delete", idD=>{
+socket.on("delete", idOn=>{
     
-    console.log("El producto eliminado es el de la posicion:",Prod)
-    let id=parseInt(idD)
-    let removProd = document.querySelectorAll('li')[id]
-    removProd.remove(id)
- 
+    let pDelete = document.getElementById(`${idOn}`)
+    pDelete.remove()
+    console.log("El producto eliminado es el de la posicion:",idOn)
 })

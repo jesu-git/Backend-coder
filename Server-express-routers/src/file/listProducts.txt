@@ -141,5 +141,49 @@
           "stock": 1500,
           "category": "verdura",
           "thumbnail": []
+     },
+     {
+          "id": 14,
+          "title": "Cereza",
+          "description": "Vegetal",
+          "code": "4102",
+          "price": 7000,
+          "status": true,
+          "stock": 1500,
+          "category": "verdura",
+          "thumbnail": []
+     },
+     {
+          "id": 15,
+          "title": "Jamon",
+          "description": "Vegetal",
+          "code": "4102",
+          "price": 7000,
+          "status": true,
+          "stock": 1500,
+          "category": "verdura",
+          "thumbnail": []
+     },
+     {
+          "id": 17,
+          "title": "Queso",
+          "description": "Vegetal",
+          "code": "4104",
+          "price": 7000,
+          "status": true,
+          "stock": 1500,
+          "category": "verdura",
+          "thumbnail": []
+     },
+     {
+          "id": 18,
+          "title": "Salame",
+          "description": "Vegetal",
+          "code": "4105",
+          "price": 7000,
+          "status": true,
+          "stock": 1500,
+          "category": "verdura",
+          "thumbnail": []
      }
 ]

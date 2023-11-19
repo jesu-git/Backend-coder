@@ -109,4 +109,5 @@ router.delete("/:id", (req, res) => {
     if (!respuesta) return res.status(400).json("Error al eliminar, vuelva intentar")
     else { res.status(200).json(`El producto con id ${id} ha sido eliminado`) 
      io.emit("delete",id)}
+     console.log(id)
 })
