@@ -29,7 +29,7 @@ export class carts {
         let carts = this.getCart()
         
 
-        let id = carts.length + 1
+        let id = Math.max(carts.map(x=> x.id),0) + 1
         let productsCart = []
 
 

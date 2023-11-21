@@ -84,7 +84,7 @@ router.post('/', (req, res) => {
     let respuesta = pm.addProducts(product);
     if (!respuesta) return res.status(400).json("No se ha podido agregar el producto")
     else { res.status(200).json("Producto ingresado correctamente:") 
-           io.emit("newProduct",respuesta.title)}
+           io.emit("newProduct",respuesta)}
     
 })
 

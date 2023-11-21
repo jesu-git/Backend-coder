@@ -3,6 +3,7 @@
 import fs from 'fs'
 
 
+
 //CLASS PRODUCT
 
 export class ProductsManager {
@@ -32,13 +33,16 @@ export class ProductsManager {
 
     let all_products = this.getProduct()
 
-    let id = all_products.length + 1
-    let productNew ={id,...product} 
+
+    let id = Math.max(...all_products.map(x => x.id), 0) + 1
+
+
+    let productNew = { id, ...product }
 
     all_products.push(productNew)
 
-    fs.writeFileSync(this.route, JSON.stringify(all_products,null,5))
-       return productNew
+    fs.writeFileSync(this.route, JSON.stringify(all_products, null, 5))
+    return productNew
 
   }
   //METODO QUE NOS DEVUELVE EL PRODUCTO MEDIANTE EL INGRESO DE ID POR PARAMETRO 

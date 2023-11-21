@@ -11,17 +11,6 @@
           "thumbnail": []
      },
      {
-          "id": 2,
-          "title": "tomate",
-          "description": "vegetal",
-          "code": "4087",
-          "price": 900,
-          "status": true,
-          "stock": 5000,
-          "category": "fruta",
-          "thumbnail": []
-     },
-     {
           "id": 3,
           "title": "Lechuga",
           "description": "vegetal",
@@ -180,6 +169,28 @@
           "title": "Salame",
           "description": "Vegetal",
           "code": "4105",
+          "price": 7000,
+          "status": true,
+          "stock": 1500,
+          "category": "verdura",
+          "thumbnail": []
+     },
+     {
+          "id": 19,
+          "title": "Paleta cocida",
+          "description": "Vegetal",
+          "code": "4112",
+          "price": 7000,
+          "status": true,
+          "stock": 1500,
+          "category": "verdura",
+          "thumbnail": []
+     },
+     {
+          "id": 20,
+          "title": "nuevo nuevito",
+          "description": "Vegetal",
+          "code": "4118",
           "price": 7000,
           "status": true,
           "stock": 1500,
